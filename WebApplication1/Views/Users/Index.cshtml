@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Users";
+}
+@model IEnumerable<WebApplication1.Models.User>
+<h1>@ViewData["Title"]</h1>
+<button type="button"><a asp-controller="Users" asp-action="New" class="text-decoration-none text-black">New</a></button>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cognome)
+                </td>
+                <td>
+                    <button><a asp-controller="Users" asp-action="Edit" asp-route-id="@item.Id" class="text-decoration-none text-black">Edit</a></button>
+                </td>
+                <td>
+                    <button><a asp-controller="Users" asp-action="Detail" asp-route-id="@item.Id" class="text-decoration-none text-black">Details</a></button>
+                </td>
+            </tr>
+        }
+        
+    </tbody>
+</table>
